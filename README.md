@@ -9,3 +9,6 @@ Note:
 <ul>
 <li>if there isn't any tools folder just create it.</li>
 </ul>
+
+<h2>How to use it</h2>
+If everything is ok you can find the Resistors tool at the tools tab in Arduino IDE.
