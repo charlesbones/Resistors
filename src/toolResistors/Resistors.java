@@ -31,18 +31,17 @@
  package toolResistors;
  
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.text.DecimalFormat;
 
+import javax.swing.JComboBox;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -114,7 +113,7 @@ import processing.app.tools.*;
 	    //-----------
 	    //Layout ComboBox and Labels
 	    //-----------
-	    gui.setLayout(new GridLayout(5,1,0,3));	   
+	    gui.setLayout(new GridLayout(4, 1, 0 ,-2));
 	    gui.setOpaque(false);
 	    //First
 	    gui.add(firstLabel);
@@ -134,11 +133,11 @@ import processing.app.tools.*;
 	    //Result
 	    //-----------
 	    updateValue();
-	    result.setBounds(100, 10, 200, 20);
+	    //result.setBounds(100, 10, 200, 20);
 	    result.setOpaque(false);
 	    result.add(resultString,BorderLayout.CENTER);
 	    resultString.setFont(new Font("Helvetica", Font.PLAIN, 25));
-	    result.setPreferredSize(new Dimension(200,30));
+	    result.setPreferredSize(new Dimension(200,40));
 	    
 	    //-----------
 	    //Resistor Graphic
@@ -147,7 +146,7 @@ import processing.app.tools.*;
 	    dos=new JLabel();
 	    tres=new JLabel();
 	    cuatro=new JLabel();
-	    resistor.setLayout(new FlowLayout(FlowLayout.CENTER,-2,2));
+	    resistor.setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
 	    resistor.setOpaque(false);
 	    //Initial state
 	    updateLabel(uno,"2-Red");
@@ -166,11 +165,15 @@ import processing.app.tools.*;
 	    //-----------
 		JBackgroundPanel bgPanel = new JBackgroundPanel();
 		 
-		// add some elements...
-		bgPanel.add(gui,BorderLayout.NORTH);
-		bgPanel.add(result,BorderLayout.AFTER_LAST_LINE);
-		bgPanel.add(resistor,BorderLayout.SOUTH);
+		bgPanel.setLayout(new BoxLayout(bgPanel,BoxLayout.Y_AXIS));
 		bgPanel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+
+		// add some elements...
+		bgPanel.add(gui);
+		bgPanel.add(Box.createRigidArea(new Dimension(0,25)));
+		bgPanel.add(result);
+		//bgPanel.add(Box.createRigidArea(new Dimension(0,4)));
+		bgPanel.add(resistor);
 		
 		// create the window
 		JFrame f = new JFrame("Resistors");
