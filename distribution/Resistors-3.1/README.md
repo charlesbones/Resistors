@@ -9,11 +9,11 @@ Not all available tools have been converted to show up in this menu. If a tool i
 
 ### Manual Install
 
-Contributed tools may be downloaded separately and manually placed within the `tools` folder of your Processing sketchbook. To find (and change) the Processing sketchbook location on your computer, open the Preferences window from the Processing application (PDE) and look for the "Sketchbook location" item at the top.
+Contributed tools may be downloaded separately and manually placed within the `tools` folder of your Arduino sketchbook. To find (and change) the Arduino sketchbook location on your computer, open the Preferences window from the Arduino application (INO) and look for the "Sketchbook location" item at the top.
 
 By default the following locations are used for your sketchbook folder: 
-  * For Mac users, the sketchbook folder is located inside `~/Documents/Processing` 
-  * For Windows users, the sketchbook folder is located inside `My Documents/Processing`
+  * For Mac users, the sketchbook folder is located inside `~/Documents/Arduino` 
+  * For Windows users, the sketchbook folder is located inside `My Documents/Arduino`
 
 Download Resistors from https://github.com/charlesbones/Resistors
 
@@ -22,7 +22,7 @@ Unzip and copy the contributed tool's folder into the `tools` folder in the Proc
 The folder structure for tool Resistors should be as follows:
 
 ```
-Processing
+Arduino
   tools
     Resistors
       examples
