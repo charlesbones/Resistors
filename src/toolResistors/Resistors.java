@@ -61,7 +61,7 @@ import processing.app.tools.*;
 	public float totalResultF;
 	DecimalFormat d1 = new DecimalFormat("#.#");
 	JLabel punta1,punta2 ,uno, dos, tres, cuatro;
-	 
+	
 	public String getMenuTitle() {
 		return "Resistors";
 	}
@@ -76,7 +76,6 @@ import processing.app.tools.*;
 		JPanel gui=new JPanel();
 		JPanel result=new JPanel();
 		JPanel resistor=new JPanel();
-		
 		//-----------
 		//ComboBox
 		//-----------
@@ -136,7 +135,7 @@ import processing.app.tools.*;
 	    //result.setBounds(100, 10, 200, 20);
 	    result.setOpaque(false);
 	    result.add(resultString,BorderLayout.CENTER);
-	    resultString.setFont(new Font("Helvetica", Font.PLAIN, 25));
+	    resultString.setFont(new Font("Verdana", Font.PLAIN, 27));
 	    result.setPreferredSize(new Dimension(200,40));
 	    
 	    //-----------
@@ -170,7 +169,8 @@ import processing.app.tools.*;
 
 		// add some elements...
 		bgPanel.add(gui);
-		bgPanel.add(Box.createRigidArea(new Dimension(0,25)));
+		//position result
+		bgPanel.add(Box.createRigidArea(new Dimension(0,20)));
 		bgPanel.add(result);
 		//bgPanel.add(Box.createRigidArea(new Dimension(0,4)));
 		bgPanel.add(resistor);
@@ -178,7 +178,8 @@ import processing.app.tools.*;
 		// create the window
 		JFrame f = new JFrame("Resistors");
 		f.setLocation(160, 200);
-        f.setSize(210,260);
+		//canvas size
+        f.setSize(210,238);
         f.setResizable(false);
 		// add the panel with the background image
 		f.add(bgPanel);
@@ -216,19 +217,34 @@ import processing.app.tools.*;
 		}
 		updateValue();
 	} 
+	//Compute the value for the label
 	protected void updateValue() {
 		String indexString=firstLabel+secondLabel;
-		if(Integer.parseInt(multiplierLabel)%1000==0){
-			totalResult=(int)(Integer.parseInt(indexString)*Integer.parseInt(multiplierLabel))/1000;
-			resultString.setText(d1.format(totalResult)+"K"+"\u2126 "+qualityLabel+"%");
-		}else if(Integer.parseInt(multiplierLabel)%1000==100){
+		int multiplier=Integer.parseInt(multiplierLabel)%10000000;
+		if(multiplier==100){
 			totalResultF=(float) ((Integer.parseInt(indexString)*Integer.parseInt(multiplierLabel))/1000.0);
 			resultString.setText(totalResultF+"K"+"\u2126 "+qualityLabel+"%");
+		}else if(multiplier==1000){
+			totalResult=(int)(Integer.parseInt(indexString)*Integer.parseInt(multiplierLabel))/1000;
+			resultString.setText(d1.format(totalResult)+"K"+"\u2126 "+qualityLabel+"%");
+		}else if(multiplier==10000){
+			totalResult=(int)(Integer.parseInt(indexString)*Integer.parseInt(multiplierLabel))/1000;
+			resultString.setText(d1.format(totalResult)+"K"+"\u2126 "+qualityLabel+"%");
+		}else if(multiplier==100000){
+			totalResultF=(float) ((Integer.parseInt(indexString)*Integer.parseInt(multiplierLabel))/1000000.0);
+			resultString.setText(totalResultF+"M"+"\u2126 "+qualityLabel+"%");
+		}else if(multiplier==1000000){
+			totalResult=(int)(Integer.parseInt(indexString)*Integer.parseInt(multiplierLabel))/1000000;
+			resultString.setText(d1.format(totalResult)+"M"+"\u2126 "+qualityLabel+"%");
+		}else if(multiplier==0){
+			totalResult=(int)(Integer.parseInt(indexString)*Integer.parseInt(multiplierLabel))/1000000;
+			resultString.setText(d1.format(totalResult)+"M"+"\u2126 "+qualityLabel+"%");
 		}else{
 			totalResult=Integer.parseInt(indexString)*Integer.parseInt(multiplierLabel);
 			resultString.setText(totalResult+"\u2126 "+qualityLabel+"%");
 		}
     }
+	//create the image for the resistor's strips
 	protected void updateLabel(JLabel picture, String name) {
         ImageIcon icon = createImageIcon("/data/" + name + ".png");
         picture.setIcon(icon);
@@ -239,7 +255,7 @@ import processing.app.tools.*;
             picture.setText("Image not found");
         }
     }
-	   /** Returns an ImageIcon, or null if the path was invalid. */
+	/** Returns an ImageIcon, or null if the path was invalid. */
     protected static ImageIcon createImageIcon(String path) {
         java.net.URL imgURL = Resistors.class.getResource(path);
         if (imgURL != null) {
