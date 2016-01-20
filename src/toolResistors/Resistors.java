@@ -51,7 +51,7 @@ import processing.app.tools.*;
  
  public class Resistors implements Tool, ActionListener {
 	 
-	public JComboBox firstList, secondList, multiplierList, qualityList;
+	public JComboBox<String> firstList, secondList, multiplierList, qualityList;
 	public String firstLabel="2";
 	public String secondLabel="2";
 	public String multiplierLabel="10";
@@ -85,10 +85,10 @@ import processing.app.tools.*;
 	    String[] multiplierValue = { "0.01-Silver", "0.1-Gold", "1-Black", "10-Brown", "100-Red", "1000-Orange", "10000-Yellow", "100000-Green", "1000000-Blue", "10000000-Purple" };
 	    String[] qualityValue = { "+-20%-None", "+-1%-Brown", "+-2%-Red", "+-5%-Gold", "+-10%-Silver"};
 	    //ComboBox 
-	    firstList = new JComboBox(firstValue);
-	    secondList = new JComboBox(secondValue);
-	    multiplierList = new JComboBox(multiplierValue);
-	    qualityList = new JComboBox(qualityValue);
+	    firstList = new JComboBox<String>(firstValue);
+	    secondList = new JComboBox<String>(secondValue);
+	    multiplierList = new JComboBox<String>(multiplierValue);
+	    qualityList = new JComboBox<String>(qualityValue);
 	    //Initial ComboBox state
 	    firstList.setSelectedIndex(2);
 	    secondList.setSelectedIndex(2);
@@ -175,16 +175,18 @@ import processing.app.tools.*;
 		//bgPanel.add(Box.createRigidArea(new Dimension(0,4)));
 		bgPanel.add(resistor);
 		
+		
 		// create the window
 		JFrame f = new JFrame("Resistors");
-		f.setLocation(160, 200);
 		//canvas size
-        f.setSize(210,238);
+		f.setSize(new Dimension(210, 238));
+		f.setLocation(160, 200);
         f.setResizable(false);
+        // show the window
+     	f.setVisible(true);
 		// add the panel with the background image
 		f.add(bgPanel);
-		// show the window
-		f.setVisible(true);
+		
 	}
 
 	@Override
@@ -283,7 +285,7 @@ class JBackgroundPanel extends JPanel {
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
     // paint the background image and scale it to fill the entire space
-    g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+    g.drawImage(img, 0, 0, 210, 238, this);
   }
 }
 
