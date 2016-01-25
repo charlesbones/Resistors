@@ -108,11 +108,14 @@ import processing.app.tools.*;
 	    JLabel secondLabel=new JLabel("Second");
 	    JLabel multiplierLabel=new JLabel("Multiplier");
 	    JLabel qualityLabel=new JLabel("Quality");
-	    
+	    firstLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+	    secondLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+	    multiplierLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+	    qualityLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
 	    //-----------
 	    //Layout ComboBox and Labels
 	    //-----------
-	    gui.setLayout(new GridLayout(4, 1, 0 ,-2));
+	    gui.setLayout(new GridLayout(4,1,0,0));
 	    gui.setOpaque(false);
 	    //First
 	    gui.add(firstLabel);
@@ -170,7 +173,7 @@ import processing.app.tools.*;
 		// add some elements...
 		bgPanel.add(gui);
 		//position result
-		bgPanel.add(Box.createRigidArea(new Dimension(0,20)));
+		bgPanel.add(Box.createRigidArea(new Dimension(0,42)));
 		bgPanel.add(result);
 		//bgPanel.add(Box.createRigidArea(new Dimension(0,4)));
 		bgPanel.add(resistor);
@@ -179,7 +182,7 @@ import processing.app.tools.*;
 		// create the window
 		JFrame f = new JFrame("Resistors");
 		//canvas size
-		f.setSize(new Dimension(210, 238));
+		f.setSize(210,258);
 		f.setLocation(160, 200);
         f.setResizable(false);
         // show the window
