@@ -173,7 +173,8 @@ import processing.app.tools.*;
 		// add some elements...
 		bgPanel.add(gui);
 		//position result
-		bgPanel.add(Box.createRigidArea(new Dimension(0,42)));
+		//LINUX 15 - WINDOWS 42
+		bgPanel.add(Box.createRigidArea(new Dimension(0,15)));
 		bgPanel.add(result);
 		//bgPanel.add(Box.createRigidArea(new Dimension(0,4)));
 		bgPanel.add(resistor);
@@ -182,7 +183,8 @@ import processing.app.tools.*;
 		// create the window
 		JFrame f = new JFrame("Resistors");
 		//canvas size
-		f.setSize(210,258);
+		//LINUX 238 - WINDOWS 258
+		f.setSize(210,238);
 		f.setLocation(160, 200);
         f.setResizable(false);
         // show the window
