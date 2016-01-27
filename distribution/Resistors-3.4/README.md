@@ -36,4 +36,4 @@ Some folders like `examples` or `src` might be missing. After tool Resistors has
 
 ### Troubleshooting
 
-If you're having trouble, try contacting the author [Carlos Rodriguez](bones.charles@gmail.com).
+If you're having trouble, try contacting the author [Carlos Rodriguez](http://bones.sikuani.net/) or email him to bones.charles@gmail.com
